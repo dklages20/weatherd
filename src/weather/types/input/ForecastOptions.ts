@@ -1,7 +1,32 @@
-import { Coordinate } from './Coordinate.ts';
 import { ForecastUnit } from '../ForecastUnit.ts';
+import { Coordinate } from './Coordinate.ts';
 
-export type ForecastOptions = {
+type BaseForecastOptions = {
   unit: ForecastUnit
-  coordinate?: Coordinate
 };
+
+type ForecastOptionsByCoordinate = {
+  coordinate: Coordinate
+  locationType: 'coordinate'
+} & BaseForecastOptions;
+
+type ForecastOptionsByZipCode = {
+  zipCode: string
+  locationType: 'zipCode'
+} & BaseForecastOptions;
+
+type ForecastOptionsByAddress = {
+  address: string
+  locationType: 'address'
+} & BaseForecastOptions;
+
+type ForecastOptionsByCity = {
+  city: string
+  locationType: 'city'
+} & BaseForecastOptions;
+
+export type ForecastOptions
+  = ForecastOptionsByCoordinate
+    | ForecastOptionsByZipCode
+    | ForecastOptionsByAddress
+    | ForecastOptionsByCity;
