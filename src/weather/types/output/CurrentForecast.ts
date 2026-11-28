@@ -1,7 +1,8 @@
-import { Forecast } from './Forecast.ts';
+import type { UnitValue } from '#app/utilities/index.ts';
+import type { Forecast } from './Forecast.ts';
 
 export type CurrentForecast = {
-  temperature: number
-  feelsLike: number
-  humidity: number
+  temperature: UnitValue<number, string>
+  feelsLike: UnitValue<number, string>
+  humidity: UnitValue<number, string>
 } & Forecast;

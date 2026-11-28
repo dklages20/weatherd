@@ -1,8 +1,9 @@
-import { ForecastUnit } from '../ForecastUnit.ts';
-import { Coordinate } from './Coordinate.ts';
+import type { Coordinate } from './Coordinate.ts';
+import type { ForecastUnit } from '#app/weather/types/ForecastUnit.ts';
 
 type BaseForecastOptions = {
   unit: ForecastUnit
+  timezone: string
 };
 
 type ForecastOptionsByCoordinate = {

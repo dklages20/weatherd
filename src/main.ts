@@ -1,13 +1,8 @@
-import fastify from 'fastify';
-import { loadConfiguration } from './config/Configuration.ts';
+import { createServer, serverConfiguration } from './server/index.ts';
 
-const configuration = loadConfiguration();
+const server = createServer();
 
-const server = fastify({
-  logger: true
-});
-
-server.listen({ port: configuration.server.port }, (err, address) => {
+server.listen({ port: serverConfiguration.port }, (err, address) => {
   if (err) {
     server.log.error(err);
     process.exit(1);

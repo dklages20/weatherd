@@ -1,4 +1,4 @@
-import { CurrentForecast, Forecast, ForecastOptions, HourlyForecast } from './types/index.ts';
+import type { CurrentForecast, Forecast, ForecastOptions, HourlyForecast } from './types/index.ts';
 
 export interface WeatherAdapter {
   getHourlyForecast(forecastOptions: ForecastOptions): Promise<HourlyForecast[]>

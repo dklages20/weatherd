@@ -1,11 +1,8 @@
-import { WeatherCondition } from './WeatherCondition.ts';
-import { ForecastUnit } from '../ForecastUnit.ts';
+import type { UnitValue } from '#app/utilities/index.ts';
+import type { WeatherCondition } from './WeatherCondition.ts';
 
 export type Forecast = {
   date: Date
-  unit: ForecastUnit
-  highTemperature: number
-  lowTemperature: number
-  chanceOfPrecipitation: number
+  chanceOfPrecipitation: UnitValue<number, string>
   conditions: WeatherCondition[]
 };

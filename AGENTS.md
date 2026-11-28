@@ -1,5 +1,13 @@
 # AGENTS.md
 
+## Development Principals
+
+- Prefer simplicity and readability
+- Avoid creation premature abstractions
+- Limit functions and classes to a single responsibility
+- Reuse existing functionality
+- Identify root causes instead of symptoms when addressing bugs
+
 ## Development Commands
 
 - Run the linter using: `npm run lint`
@@ -22,6 +30,7 @@
   - Example: `WeatherService.ts`
 - Files containing multiple functions, types, or interfaces should be named using camelCase
   - Example: `stringUtils.ts`
+- Nest utility functions under a `utils` folder and group by likeness
 
 #### Components
 
@@ -30,10 +39,37 @@
 - Use adjectives for capabilities
   - Examples: `Disposable`, `Runnable`, `Printable`
 
+## Typescript Conventions
+
+### DO
+
+- Prefer strong typing
+- Avoid unsafe assertions
+- Avoid non-null assertions
+- Use `const` unless re-assignment is truly necessary
+- Use `import type` for type only imports
+- Prefer early returns over nested conditionals
+- Prefer abstracting over multiple conditionals
+
+### DO NOT
+
+- Suppress typescript errors
+- Use `any`; Use `unknown` when type is unknown
+
 ## Testing
 
-- Aim for 100% coverage with exclusions where acceptable
-- Co-locate tests with files in a `tests` folder
+### DO
+
+- Aim for 100% coverage with justified exclusions
+- Co-locate tests in a `tests` folder
+- Group tests by function
+- Use explicit, minimal, self-contained test data that clearly conveys intent
+- Construct test data directly rather than deriving it from other fixtures or using nested object spreads
+- Limit tests to a single assertion
+
+### DO NOT 
+
+- Test error messages
 
 ## Research
 
