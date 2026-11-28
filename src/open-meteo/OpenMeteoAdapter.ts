@@ -39,9 +39,9 @@ export class OpenMeteoAdapter implements WeatherAdapter {
       temperature: this.buildUnitValue(response, 'temperature_2m'),
       humidity: this.buildUnitValue(response, 'relative_humidity_2m'),
       feelsLike: this.buildUnitValue(response, 'apparent_temperature'),
-      chanceOfPrecipitation: this.buildUnitValue(response, 'precipitation'),
+      accumulatedPrecipitation: this.buildUnitValue(response, 'precipitation'),
       conditions: [],
-      date: new Date(response.current.time)
+      date: this.buildDate(response)
     };
   }
 
@@ -66,5 +66,10 @@ export class OpenMeteoAdapter implements WeatherAdapter {
       value: weatherValue,
       unit: weatherUnit
     };
+  }
+
+  private buildDate(response: CurrentWeatherResponse): Date {
+    const timestamp = Date.parse(`${response.current.time}Z`);
+    return new Date(timestamp - response.utc_offset_seconds * 1000);
   }
 }

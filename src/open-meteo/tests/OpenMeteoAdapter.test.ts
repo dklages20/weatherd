@@ -12,14 +12,14 @@ const getCurrentWeatherMock = vi.mocked(getCurrentWeather);
 
 describe('OpenMeteoAdapter', () => {
   describe('getCurrentForecast', () => {
-    it('maps an imperial coordinate forecast response', async () => {
+    it('maps an imperial coordinate forecast response using the supplied UTC offset', async () => {
       const currentWeatherResponse: CurrentWeatherResponse = {
         latitude: 40.7128,
         longitude: -74.006,
         generationtime_ms: 0.1,
-        utc_offset_seconds: -18000,
-        timezone: 'America/New_York',
-        timezone_abbreviation: 'EST',
+        utc_offset_seconds: 32400,
+        timezone: 'Asia/Tokyo',
+        timezone_abbreviation: 'JST',
         elevation: 10,
         current_units: {
           time: 'iso8601',
@@ -47,7 +47,7 @@ describe('OpenMeteoAdapter', () => {
           latitude: 40.7128,
           longitude: -74.006
         },
-        timezone: 'America/New_York',
+        timezone: 'Asia/Tokyo',
         unit: 'imperial'
       })).resolves.toEqual({
         temperature: {
@@ -62,12 +62,12 @@ describe('OpenMeteoAdapter', () => {
           value: 75,
           unit: '%'
         },
-        chanceOfPrecipitation: {
+        accumulatedPrecipitation: {
           value: 0.1,
           unit: 'in'
         },
         conditions: [],
-        date: new Date('2026-11-27T10:00')
+        date: new Date('2026-11-27T01:00:00Z')
       });
     });
 

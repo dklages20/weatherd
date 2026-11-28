@@ -3,6 +3,6 @@ import type { WeatherCondition } from './WeatherCondition.ts';
 
 export type Forecast = {
   date: Date
-  chanceOfPrecipitation: UnitValue<number, string>
+  accumulatedPrecipitation: UnitValue<number, string>
   conditions: WeatherCondition[]
 };

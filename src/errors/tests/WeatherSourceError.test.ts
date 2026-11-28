@@ -17,4 +17,13 @@ describe('WeatherSourceError', () => {
 
     expect(error.cause).toBe(cause);
   });
+
+  it('preserves the source error status code', () => {
+    const error = new WeatherSourceError('A weather source error occurred', {
+      statusCode: 503,
+      reason: 'The weather source is unavailable'
+    });
+
+    expect(error.statusCode).toBe(503);
+  });
 });
